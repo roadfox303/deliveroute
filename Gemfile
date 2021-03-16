@@ -24,6 +24,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
+gem 'devise-i18n'
 gem 'slim-rails'
 gem 'dotenv-rails'
 gem 'kaminari', '~> 0.17.0'

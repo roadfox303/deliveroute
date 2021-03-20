@@ -1,0 +1,11 @@
+= form_with model: route, local:true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, id: 'route_name'
+    = f.label :memo
+    = f.text_area :memo, id: 'route_memo'
+    = f.hidden_field :sequence, id: 'route_sequence'
+  div.button_box
+    = f.submit '登録する' , class:'button-primary'
+    - unless route.id == nil
+      = link_to "削除", {:controller => :routes, :action => 'destroy', :id => route.id }, :method => :delete, data: { confirm: "本当に「#{route.name}」 を削除しますか？" }, class:'button button-primary'

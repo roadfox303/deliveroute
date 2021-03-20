@@ -1,2 +1,37 @@
-- if user_signed_in?
-  div #{@user.email}
+
+h1 配送ルート一覧
+/ h3
+/   span 01
+/   | 見出し
+= render partial: 'shared/notice'
+= link_to new_route_path, class:'button button-secondary w_full' do
+  i.fas.fa-pencil-alt
+  span 新規ルートを作成
+- if @routes.size >= 1
+  div.route_list
+    = form_with(url: update_order_routes_path, local: true, method: :patch, id:'sort_form') do
+      ul.sortableArea
+        - @routes.each do |route|
+          = fields_for "routes[]", route do |f|
+            li id="id_#{route.id}"
+              = link_to route_path(route.id) do
+                h2
+                  span.sequence
+                    = route.sequence.present? == true ? "#{route.sequence}" : '--'
+                  span.title #{route.name}
+                - if route.memo.present?
+                  span.memo #{route.memo}
+              div.bottom
+                = link_to edit_route_path(route.id), class:'button button-secondary' do
+                  i.fas.fa-edit
+                  span 編集
+                = link_to route_path(route.id), class:'button button-secondary' do
+                  i.fas.fa-list-ol
+                  span 見る
+                div.edited
+                  span 更新：
+                  span
+                    = l(route.updated_at, format: :long)
+              = f.hidden_field :sequence
+- else
+  div.list_empty 登録されたルートがありません。

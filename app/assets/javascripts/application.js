@@ -14,3 +14,27 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+document.addEventListener('turbolinks:load', function() {
+  $(".sortableArea").sortable({
+    handle:'h2',
+    opacity: 0.7,
+    cursor: 'ns-resize',
+    update: function(){
+      let list_number = $(this).index();
+      let list_array = $(this).sortable("toArray");
+      // console.log(list_number, list_array);
+      list_array.map(function( value, index ) {
+        $(`#${value} input`).val(index + 1);
+        $(`#${value} span:first`).text(index + 1);
+      });
+      $('#sort_form').submit();
+      // $.ajax({
+      // url: url,  // リクエストを送信するURLを指定
+      // type: "POST",  // HTTPメソッドを指定（デフォルトはGET）
+      // data: {  // 送信するデータをハッシュ形式で指定
+      //   note: {body: inputText}
+      // },
+      // dataType: "json"  // レスポンスデータをjson形式と指定する
+    }
+  });
+});

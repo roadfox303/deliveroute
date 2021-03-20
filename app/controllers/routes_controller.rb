@@ -45,7 +45,7 @@ class RoutesController < ApplicationController
   end
 
   def update_order
-    Route.multi_update(routes_params)
+    Route.multi_update(routes_params, :routes)
   end
 
   private

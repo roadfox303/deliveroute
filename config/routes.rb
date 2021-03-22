@@ -13,6 +13,11 @@ Rails.application.routes.draw do
       patch :update_order
     end
   end
+  resources :spots do
+    collection do
+      patch :update_order
+    end
+  end
 
 
   if Rails.env.development?

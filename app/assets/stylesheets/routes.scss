@@ -4,7 +4,7 @@
 $thema-color: #00C3F3;
 $background-color: #f4f4f4;
 $font-color: #0D313C;
-.route_list{
+.route_list,.spot_list{
   ul{
     display: block;
   }
@@ -40,6 +40,11 @@ $font-color: #0D313C;
     padding:1rem 0;
     border-bottom: dotted 1px #ccc;
     margin: 0 1rem;
+    line-height: 1.4;
+    p{
+      margin: 0;
+      padding: 0;
+    }
   }
   .bottom {
     margin: 0 1rem;

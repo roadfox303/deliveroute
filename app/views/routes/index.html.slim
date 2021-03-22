@@ -20,7 +20,8 @@ h1 配送ルート一覧
                     = route.sequence.present? == true ? "#{route.sequence}" : '--'
                   span.title #{route.name}
                 - if route.memo.present?
-                  span.memo #{route.memo}
+                  span.memo
+                    = simple_format(route.memo)
               div.bottom
                 = link_to edit_route_path(route.id), class:'button button-secondary' do
                   i.fas.fa-edit

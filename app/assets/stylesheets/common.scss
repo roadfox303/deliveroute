@@ -1,0 +1,116 @@
+$thema-color: #00C3F3;
+$background-color: #f4f4f4;
+$font-color: #0D313C;
+#container{
+  padding: 0.8rem;
+
+}
+body{
+  background: $background-color;
+  color: $font-color;
+}
+/* 見出し */
+h1 {
+  position: relative;
+  margin-left: 7px;
+  padding: 1rem 2rem calc(1rem + 5px);
+  background: $thema-color;
+  overflow: visible;
+  font-size: 2rem;
+  font-weight: bold;
+  // margin-left: 7px;
+  // margin-top: 7px;
+}
+
+h1:before {
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: 100%;
+  height: 100%;
+  content: '';
+  border: 4px solid $font-color;
+  color:$font-color;
+}
+
+h2 {
+  display: block;
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem 2rem;
+  background: $thema-color;
+  color: #fff;
+}
+
+h3 {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 1rem 1rem 90px;
+  border: 2px solid #000;
+  font-size: 2rem;
+}
+
+h3:before {
+  position: absolute;
+  top: -150%;
+  left: -130px;
+  width: 200px;
+  height: 300%;
+  content: '';
+  -webkit-transform: rotate(25deg);
+  transform: rotate(25deg);
+  background: #000;
+}
+
+h3 span {
+  font-size: 40px;
+  font-size: 3rem;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 16px;
+  color: #fff;
+}
+
+/* ボタン */
+a i{
+  padding-right: 0.3rem;
+}
+.w_full{
+  width: 100%;
+  i{
+    padding-right: 0.5rem;
+  }
+}
+.button-secondary{
+  background: #fff;
+  border-radius: 19px;
+}
+.btn_acordion{
+  width: calc(100% - 2rem);
+  margin: 1rem 1rem 0;
+  padding: 0;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  position: relative;
+  transform:rotate(0deg);
+  i {
+    margin-left: 0.5rem;
+  }
+}
+.btn_acordion i.up{
+  transform:rotate(180deg);
+}
+.move_icon{
+  position: absolute;
+  right: 1rem;
+  font-size: 1.6rem;
+  font-weight: normal;
+  top: 1.3rem;
+}

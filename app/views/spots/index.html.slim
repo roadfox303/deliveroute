@@ -1,0 +1,51 @@
+h1 スポット一覧
+= render partial: 'shared/notice'
+= link_to new_spot_path, class:'button button-secondary w_full' do
+  i.fas.fa-pencil-alt
+  span 新規スポットを作成
+- if @spots.size >= 1
+  div.spot_list
+    = form_with(url: update_order_spots_path, local: true, method: :patch, id:'sort_form') do
+      ul
+        - @spots.each do |spot|
+          = fields_for "spots[]", spot do |f|
+            li id="id_#{spot.id}"
+              h2
+                span.sequence
+                  = spot.id
+                span.title #{spot.name}
+              dl.spot_profile
+                dt 住所
+                dd
+                  = link_to "https://maps.google.co.jp/maps/search/#{spot.address}" do
+                    i.fas.fa-map-marker-alt
+                    = spot.address
+                dt TEL
+                dd
+                  = link_to "tel:#{spot.tel}" do
+                    i.fas.fa-phone-volume
+                    = spot.tel
+              ul.route_tag
+                li ルート1
+                li 火曜日のルート
+                li 日曜日
+              - if spot.memo.present?
+                div.btn_acordion.button.button-secondary
+                  span メモ
+                  i.fas.fa-chevron-down
+                span.memo.close
+                  = simple_format(spot.memo)
+              div.bottom
+                = link_to edit_spot_path(spot.id), class:'button button-secondary' do
+                  i.fas.fa-edit
+                  span 編集
+                / = link_to spot_path(spot.id), class:'button button-secondary' do
+                /   i.fas.fa-list-ol
+                /   span 見る
+                div.edited
+                  span 更新：
+                  span
+                    = l(spot.updated_at, format: :long)
+  = paginate @spots
+- else
+  div.list_empty 登録されたスポットがありません。

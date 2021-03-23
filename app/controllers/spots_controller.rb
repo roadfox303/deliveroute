@@ -3,7 +3,7 @@ class SpotsController < ApplicationController
   before_action :set_id, only: %i[edit destroy update show]
   def index
     @user = current_user
-    @spots = current_user.spots.order(name: "ASC")
+    @spots = current_user.spots.order(id: "DESC").page(params[:page]).per(4)
   end
 
   def show
@@ -34,6 +34,12 @@ class SpotsController < ApplicationController
   end
 
   def destroy
+    if
+      @spot.destroy
+      redirect_to spots_path, notice: "「#{@spot.name}」を削除しました"
+    else
+      render spots_path, alert: "「#{@spot.name}」を削除する権限がありません"
+    end
   end
 
   # def update_order

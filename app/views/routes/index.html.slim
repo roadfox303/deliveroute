@@ -19,6 +19,7 @@ h1 配送ルート一覧
                   span.sequence
                     = route.sequence.present? == true ? "#{route.sequence}" : '--'
                   span.title #{route.name}
+                  i.fas.fa-arrows-alt-v.move_icon
                 - if route.memo.present?
                   span.memo
                     = simple_format(route.memo)

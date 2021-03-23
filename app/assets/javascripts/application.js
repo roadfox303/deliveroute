@@ -39,4 +39,8 @@ document.addEventListener('turbolinks:load', function() {
       // dataType: "json"  // レスポンスデータをjson形式と指定する
     }
   });
+  $('.btn_acordion').on('click',function(){
+    $(this).next().toggleClass('close');
+    $('i',this).toggleClass('up');
+  });
 });

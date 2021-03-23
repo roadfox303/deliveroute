@@ -59,3 +59,14 @@ $font-color: #0D313C;
     color: #fff;
   }
 }
+
+.memo{
+  overflow: hidden;
+  padding-top: 0;
+  height: auto;
+}
+.close{
+  height: 0px;
+  padding: 1rem 0 0!important;
+  overflow: hidden;
+}

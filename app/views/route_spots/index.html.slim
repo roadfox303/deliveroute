@@ -1,0 +1,9 @@
+
+= form_with(url: update_order_route_route_spots_path, local: true, method: :patch, id:'sort_form') do
+  - @route_spots.each do |route_spot|
+    = fields_for "route_spots[]", route_spot do |f|
+      div #{route_spot.spot.name}
+      = f.label :arrival
+      = f.text_field :arrival, id: 'route_spot_arrival'
+      = f.label :volume
+      = f.text_field :volume, id: 'route_spot_volume'

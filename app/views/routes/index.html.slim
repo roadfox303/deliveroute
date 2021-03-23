@@ -27,9 +27,9 @@ h1 配送ルート一覧
                 = link_to edit_route_path(route.id), class:'button button-secondary' do
                   i.fas.fa-edit
                   span 編集
-                = link_to route_path(route.id), class:'button button-secondary' do
+                = link_to route_route_spots_path(route.id), class:'button button-secondary' do
                   i.fas.fa-list-ol
-                  span 見る
+                  span 経路編集
                 div.edited
                   span 更新：
                   span

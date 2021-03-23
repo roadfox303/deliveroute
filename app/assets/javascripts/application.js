@@ -43,4 +43,32 @@ document.addEventListener('turbolinks:load', function() {
     $(this).next().toggleClass('close');
     $('i',this).toggleClass('up');
   });
+
+  $("#route_spots li").click(function () {
+    $target = $(`#hidden_spots #route_spot_ids_${$(this).attr('data')}`);
+    let count = Number($('#spot_count').text().replace(/[^0-9]/g, ''));
+    if($target.prop('checked')){
+      $target.prop('checked', false);
+      $('div',this).removeClass('checkbox_on');
+      $('#spot_count').text(` (${count - 1})`);
+    }else{
+      $target.prop('checked', true);
+      $('div',this).addClass('checkbox_on');
+    $('#spot_count').text(` (${count + 1})`);
+    }
+  });
+
+  $("#spot_routes li").click(function () {
+    $target = $(`#hidden_routes #spot_route_ids_${$(this).attr('data')}`);
+    let count = Number($('#route_count').text().replace(/[^0-9]/g, ''));
+    if($target.prop('checked')){
+      $target.prop('checked', false);
+      $('div',this).removeClass('checkbox_on');
+      $('#route_count').text(` (${count - 1})`);
+    }else{
+      $target.prop('checked', true);
+      $('div',this).addClass('checkbox_on');
+    $('#route_count').text(` (${count + 1})`);
+    }
+  });
 });

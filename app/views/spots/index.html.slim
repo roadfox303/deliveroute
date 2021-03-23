@@ -25,10 +25,10 @@ h1 スポット一覧
                   = link_to "tel:#{spot.tel}" do
                     i.fas.fa-phone-volume
                     = spot.tel
-              ul.route_tag
-                li ルート1
-                li 火曜日のルート
-                li 日曜日
+              - if spot.routes.present?
+                ul.route_tag
+                  - spot.routes.each do |route|
+                    li #{route.name}
               - if spot.memo.present?
                 div.btn_acordion.button.button-secondary
                   span メモ

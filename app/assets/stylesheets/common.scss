@@ -90,3 +90,27 @@ a i{
   background: #fff;
   border-radius: 19px;
 }
+.btn_acordion{
+  width: calc(100% - 2rem);
+  margin: 1rem 1rem 0;
+  padding: 0;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  position: relative;
+  transform:rotate(0deg);
+  i {
+    margin-left: 0.5rem;
+  }
+}
+.btn_acordion i.up{
+  transform:rotate(180deg);
+}
+.move_icon{
+  position: absolute;
+  right: 1rem;
+  font-size: 1.6rem;
+  font-weight: normal;
+  top: 1.3rem;
+}

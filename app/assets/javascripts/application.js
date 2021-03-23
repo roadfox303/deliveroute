@@ -19,6 +19,8 @@ document.addEventListener('turbolinks:load', function() {
     handle:'h2',
     opacity: 0.7,
     cursor: 'ns-resize',
+    scrollSensitivity: 40,
+    scrollSpeed: 20,
     update: function(){
       let list_number = $(this).index();
       let list_array = $(this).sortable("toArray");
@@ -36,5 +38,9 @@ document.addEventListener('turbolinks:load', function() {
       // },
       // dataType: "json"  // レスポンスデータをjson形式と指定する
     }
+  });
+  $('.btn_acordion').on('click',function(){
+    $(this).next().toggleClass('close');
+    $('i',this).toggleClass('up');
   });
 });

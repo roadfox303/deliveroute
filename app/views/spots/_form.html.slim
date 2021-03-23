@@ -1,0 +1,14 @@
+= form_with model: spot, local:true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, id: 'spot_name'
+    = f.label :address
+    = f.text_field :address, id: 'spot_address'
+    = f.label :tel
+    = f.text_field :tel, id: 'spot_tel'
+    = f.label :memo
+    = f.text_area :memo, id: 'spot_memo'
+  div.button_box
+    = f.submit '登録する' , class:'button-primary'
+    - unless spot.id == nil
+      = link_to "削除", {:controller => :spots, :action => 'destroy', :id => spot.id }, :method => :delete, data: { confirm: "本当に「#{spot.name}」 を削除しますか？" }, class:'button button-primary'

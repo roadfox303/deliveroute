@@ -12,7 +12,7 @@ ja:
         password_confirmation: 確認用パスワード
       route:
         name: ルート名
-        memo: メモ
+        memo: ルートメモ
         sequence: 表示順序
         created_at: 作成日時
         updated_at: 更新日時
@@ -20,14 +20,14 @@ ja:
         name: 名前
         address: 住所
         tel: 電話番号
-        memo: メモ
+        memo: スポットメモ
         sequence: 表示順序
         created_at: 作成日時
         updated_at: 更新日時
       route_spot:
         arrival: 定時
         volume: 人数
-        memo: メモ
+        memo: 経路メモ
         sequence: 表示順序
         created_at: 作成日時
         updated_at: 更新日時

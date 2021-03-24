@@ -26,19 +26,47 @@ document.addEventListener('turbolinks:load', function() {
       let list_array = $(this).sortable("toArray");
       // console.log(list_number, list_array);
       list_array.map(function( value, index ) {
-        $(`#${value} input`).val(index + 1);
+        $(`#${value} input.form_sequence`).val(index + 1);
         $(`#${value} span:first`).text(index + 1);
       });
       $('#sort_form').submit();
-      // $.ajax({
-      // url: url,  // リクエストを送信するURLを指定
-      // type: "POST",  // HTTPメソッドを指定（デフォルトはGET）
-      // data: {  // 送信するデータをハッシュ形式で指定
-      //   note: {body: inputText}
-      // },
-      // dataType: "json"  // レスポンスデータをjson形式と指定する
     }
   });
+  $(".sortableArea2").sortable({
+    handle:'h2',
+    opacity: 0.7,
+    cursor: 'ns-resize',
+    scrollSensitivity: 40,
+    scrollSpeed: 20,
+    update: function(){
+      let list_number = $(this).index();
+      let list_array = $(this).sortable("toArray");
+      // console.log(list_number, list_array);
+      list_array.map(function( value, index ) {
+        $(`#${value} input.form_sequence`).val(index + 1);
+        $(`#${value} span:first`).text(index + 1);
+      });
+    }
+  });
+  var options = {
+        now: "12:00", //hh:mm 24 hour format only, defaults to current time
+        twentyFour: true,  //Display 24 hour format, defaults to false
+        upArrow: 'wickedpicker__controls__control-up',  //The up arrow class selector to use, for custom CSS
+        downArrow: 'wickedpicker__controls__control-down', //The down arrow class selector to use, for custom CSS
+        close: 'wickedpicker__close', //The close class selector to use, for custom CSS
+        hoverState: 'hover-state', //The hover state class to use, for custom CSS
+        title: '日付入力', //The Wickedpicker's title,
+        showSeconds: false, //Whether or not to show seconds,
+        timeSeparator: ' : ', // The string to put in between hours and minutes (and seconds)
+        secondsInterval: 1, //Change interval for seconds, defaults to 1,
+        minutesInterval: 5, //Change interval for minutes, defaults to 1
+        beforeShow: null, //A function to be called before the Wickedpicker is shown
+        afterShow: null, //A function to be called after the Wickedpicker is closed/hidden
+        show: null, //A function to be called when the Wickedpicker is shown
+        clearable: false, //Make the picker's input clearable (has clickable "x")
+  };
+  $('.timepicker').wickedpicker(options);
+
   $('.btn_acordion').on('click',function(){
     $(this).next().toggleClass('close');
     $('i',this).toggleClass('up');

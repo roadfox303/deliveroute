@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_060759) do
   create_table "route_spots", force: :cascade do |t|
     t.bigint "route_id"
     t.bigint "spot_id"
-    t.time "arrival"
+    t.string "arrival"
     t.integer "volume"
     t.text "memo"
     t.integer "sequence"

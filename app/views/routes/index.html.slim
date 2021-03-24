@@ -1,8 +1,6 @@
 
 h1 配送ルート一覧
-/ h3
-/   span 01
-/   | 見出し
+
 = render partial: 'shared/notice'
 = link_to new_route_path, class:'button button-secondary w_full' do
   i.fas.fa-pencil-alt
@@ -34,6 +32,6 @@ h1 配送ルート一覧
                   span 更新：
                   span
                     = l(route.updated_at, format: :long)
-              = f.hidden_field :sequence
+              = f.hidden_field :sequence, class:'form_sequence'
 - else
   div.list_empty 登録されたルートがありません。

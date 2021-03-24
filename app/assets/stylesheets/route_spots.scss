@@ -1,3 +1,43 @@
 // Place all the styles related to the route_spots controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.box_line{
+  display: flex;
+  padding: 1rem 0.5rem 0.5rem;
+}
+.box_line div{
+  width: 50%;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0 0.5rem;
+  label,input{
+    display: inline;
+  }
+  label{
+    margin-right: 1rem;
+    width: 3rem;
+  }
+  input{
+    margin: 0;
+
+  }
+  .form_arrival,.form_volume{
+    width: calc(100% - 4rem);
+    text-align: center;
+  }
+}
+.box_bottom{
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem 1rem;
+  label{
+    margin-right: 1rem;
+  }
+}
+.tag_route_spot_memo{
+  width: 3rem;
+}
+.route_spot_memo{
+  width: calc(100% - 4rem);
+  margin: 0;
+}

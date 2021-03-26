@@ -1,3 +1,6 @@
 - @route.errors.any?
   = render partial: 'shared/errors', locals: { object: @route }
+h1
+  span ルート情報を編集
+  span.subtitle #{@route.name}
 = render partial: 'form', locals: { route: @route }

@@ -15,4 +15,19 @@ class Route < ApplicationRecord
   #     route.update_attributes!(attributes)
   #   end
   # end
+  before_validation :set_sequence
+  after_destroy :align_sequence
+
+  private
+    def set_sequence
+      if sequence.nil?
+        self.sequence = (self.user.routes.size >= 1 ? self.user.routes.maximum("sequence") + 1 : 1)
+      end
+    end
+    def align_sequence
+      self.user.routes.order(sequence: "ASC", id:"DESC").map.with_index{ |route,index|
+        route.sequence = index + 1
+        route.save
+      }
+    end
 end

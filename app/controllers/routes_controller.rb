@@ -13,7 +13,7 @@ class RoutesController < ApplicationController
 
   def new
     @route = Route.new
-    @route.sequence = Route.maximum("sequence") + 1
+    # @route.sequence = (current_user.routes != nil ? current_user.routes.maximum("sequence") + 1 : 1)
   end
 
   def create

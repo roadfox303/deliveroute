@@ -11,13 +11,13 @@
         = " (#{route.spots.size})"
     ul#route_spots
       - @my_spots.each do |spot|
-        - if @have_spots.include?(spot.id)
+        - if @have_spots&.include?(spot.id)
           li.btn_spot data=spot.id
              div.checkbox_on
               span.spot_id ID:#{spot.id}
               span.spot_name #{spot.name}
               span.spot_address #{spot.address}
-        - else
+        - elsif @have_spots != nil
           li.btn_spot data=spot.id
             div
               span.spot_id ID:#{spot.id}
@@ -25,7 +25,8 @@
               span.spot_address #{spot.address}
     span#hidden_spots
       = f.collection_check_boxes(:spot_ids, @my_spots, :id, :name)
-  div.button_box
+  div.button_box.btn3
+    = link_to '戻る', routes_path, class:'button button-primary'
     = f.submit '登録する' , class:'button-primary'
     - unless route.id == nil
       = link_to "削除", {:controller => :routes, :action => 'destroy', :id => route.id }, :method => :delete, data: { confirm: "本当に「#{route.name}」 を削除しますか？" }, class:'button button-primary'

@@ -13,17 +13,19 @@
       span#route_count
         = " (#{spot.routes.size})"
     ul#spot_routes
+
       - @my_routes.each do |route|
-        - if @have_routes.include?(route.id)
+        - if @my_routes&.include?(route.id)
           li.btn_route data=route.id
              div.checkbox_on
               span.route_sequence #{route.sequence}
               span.route_name #{route.name}
-        - else
+        - elsif @my_routes != nil
           li.btn_spot data=route.id
             div
               span.route_sequence #{route.sequence}
               span.route_name #{route.name}
+
   span#hidden_routes
     = f.collection_check_boxes(:route_ids, @my_routes, :id, :name)
   div.button_box

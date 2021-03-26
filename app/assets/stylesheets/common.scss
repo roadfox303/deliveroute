@@ -13,6 +13,10 @@ body{
 textarea::placeholder {
   color: #cccccc;
 }
+input.form_alert{
+  color:#f00;
+  background: #ffc2d1;
+}
 /* 見出し */
 h1 {
   position: relative;
@@ -24,6 +28,15 @@ h1 {
   font-weight: bold;
   // margin-left: 7px;
   // margin-top: 7px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  span:first-child{
+    margin-right: 1.2rem;
+  }
+  .subtitle{
+    font-size: 1.4rem;
+  }
 }
 
 h1:before {
@@ -128,5 +141,31 @@ a i{
 #route_form,#spot_form{
   input[type="text"], textarea ,select{
     width: 100%;
+  }
+}
+.button_box.btn3{
+  display: flex;
+  .button-primary{
+    width: calc(33.3% - 4px);
+    box-sizing: border-box;
+  }
+  .button-primary:first-child{
+    margin-right: 6px;
+  }
+  .button-primary:last-child{
+    margin-left: 6px;
+  }
+}
+.button_box.btn2{
+  display: flex;
+  .button-primary{
+    width: calc(50% - 3px);
+    box-sizing: border-box;
+  }
+  .button-primary:first-child{
+    margin-right: 3px;
+  }
+  .button-primary:last-child{
+    margin-left: 3px;
   }
 }

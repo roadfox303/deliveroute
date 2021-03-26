@@ -24,7 +24,7 @@ document.addEventListener('turbolinks:load', function() {
     update: function(){
       let list_number = $(this).index();
       let list_array = $(this).sortable("toArray");
-      // console.log(list_number, list_array);
+      // list_array.pop();
       list_array.map(function( value, index ) {
         $(`#${value} input.form_sequence`).val(index + 1);
         $(`#${value} span:first`).text(index + 1);
@@ -41,30 +41,35 @@ document.addEventListener('turbolinks:load', function() {
     update: function(){
       let list_number = $(this).index();
       let list_array = $(this).sortable("toArray");
-      // console.log(list_number, list_array);
+      let $arrival = $(`input.form_arrival`);
       list_array.map(function( value, index ) {
         $(`#${value} input.form_sequence`).val(index + 1);
         $(`#${value} span:first`).text(index + 1);
+        if (index >= 1 && $arrival.eq(index).val() <= $arrival.eq(index -1).val()){
+          $arrival.eq(index).addClass('form_alert');
+        }else{
+          $arrival.eq(index).removeClass('form_alert');
+        }
       });
     }
   });
-  var options = {
-        now: "12:00", //hh:mm 24 hour format only, defaults to current time
-        twentyFour: true,  //Display 24 hour format, defaults to false
-        upArrow: 'wickedpicker__controls__control-up',  //The up arrow class selector to use, for custom CSS
-        downArrow: 'wickedpicker__controls__control-down', //The down arrow class selector to use, for custom CSS
-        close: 'wickedpicker__close', //The close class selector to use, for custom CSS
-        hoverState: 'hover-state', //The hover state class to use, for custom CSS
-        title: '日付入力', //The Wickedpicker's title,
-        showSeconds: false, //Whether or not to show seconds,
-        timeSeparator: ' : ', // The string to put in between hours and minutes (and seconds)
-        secondsInterval: 1, //Change interval for seconds, defaults to 1,
-        minutesInterval: 5, //Change interval for minutes, defaults to 1
-        beforeShow: null, //A function to be called before the Wickedpicker is shown
-        afterShow: null, //A function to be called after the Wickedpicker is closed/hidden
-        show: null, //A function to be called when the Wickedpicker is shown
-        clearable: false, //Make the picker's input clearable (has clickable "x")
-  };
+  let options = {
+    now: "12:00", //hh：mm 24時間形式のみ、デフォルトは現在時刻
+    editMode: true,
+    twentyFour: true, //24時間形式を表示します。デフォルトはfalseです。
+    title: '定時を設定', //Wickedpickerのタイトル
+    minutesInterval: 5, //分間隔を変更します。デフォルトは1です。
+    onClickOutside: function(e) {
+      let $arrival = $('.form_arrival');
+      $arrival.map(function(index, element) {
+        if(index >= 1 && $(element).val() <= $arrival.eq(index -1).val()){
+          $arrival.eq(index).addClass('form_alert');
+        }else{
+          $arrival.eq(index).removeClass('form_alert');
+        }
+      })
+    }
+  }
   $('.timepicker').wickedpicker(options);
 
   $('.btn_acordion').on('click',function(){

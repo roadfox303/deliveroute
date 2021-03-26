@@ -70,3 +70,21 @@ $font-color: #0D313C;
   padding: 1rem 0 0!important;
   overflow: hidden;
 }
+#spot_routes{
+  list-style: none;
+  display: block;
+  li{
+    div{
+      padding: 0.5rem 0.8rem;
+      background: #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      .route_sequence{
+        margin-right: 1rem;
+      }
+      .route_name{
+        font-weight: bold;
+      }
+    }
+  }
+}

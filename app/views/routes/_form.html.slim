@@ -1,11 +1,32 @@
-= form_with model: route, local:true do |f|
+= form_with model: route, local:true, id:"route_form" do |f|
   .form-group
     = f.label :name
     = f.text_field :name, id: 'route_name'
     = f.label :memo
     = f.text_area :memo, id: 'route_memo'
     = f.hidden_field :sequence, id: 'route_sequence'
-  div.button_box
+    = f.label "中継地点" do
+      span 中継地点
+      span#spot_count
+        = " (#{route.spots.size})"
+    ul#route_spots
+      - @my_spots.each do |spot|
+        - if @have_spots&.include?(spot.id)
+          li.btn_spot data=spot.id
+             div.checkbox_on
+              span.spot_id ID:#{spot.id}
+              span.spot_name #{spot.name}
+              span.spot_address #{spot.address}
+        - elsif @have_spots != nil
+          li.btn_spot data=spot.id
+            div
+              span.spot_id ID:#{spot.id}
+              span.spot_name #{spot.name}
+              span.spot_address #{spot.address}
+    span#hidden_spots
+      = f.collection_check_boxes(:spot_ids, @my_spots, :id, :name)
+  div.button_box.btn3
+    = link_to '戻る', routes_path, class:'button button-primary'
     = f.submit '登録する' , class:'button-primary'
     - unless route.id == nil
       = link_to "削除", {:controller => :routes, :action => 'destroy', :id => route.id }, :method => :delete, data: { confirm: "本当に「#{route.name}」 を削除しますか？" }, class:'button button-primary'

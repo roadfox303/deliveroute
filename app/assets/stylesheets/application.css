@@ -13,6 +13,7 @@
  *= require_self
  *= require normalize.css
  *= require skeleton.css
+ *= require wickedpicker.scss
  *= require common.scss
  *= require_tree .
  */

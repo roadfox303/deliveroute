@@ -2,9 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $thema-color: #00C3F3;
+$tag-color: #db0f6f;
 $background-color: #f4f4f4;
 $font-color: #0D313C;
-.route_list,.spot_list{
+.route_list,.spot_list,.route_spots_list{
   ul{
     display: block;
   }
@@ -68,6 +69,34 @@ $font-color: #0D313C;
       font-size: 1.4rem;
       span{
         vertical-align: middle;
+      }
+    }
+  }
+}
+#route_spots{
+  list-style: none;
+  display: block;
+  li{
+    div{
+      padding: 0.5rem 0.8rem;
+      background: #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      span{
+        display: block;
+      }
+      .spot_id,.spot_address{
+        float: left;
+      }
+      .spot_id{
+        margin-right: 1rem;
+      }
+      .spot_name{
+        font-weight: bold;
+      }
+      .spot_address{
+        width: 100%;
+        float: none;
       }
     }
   }

@@ -1,4 +1,5 @@
 $thema-color: #00C3F3;
+$tag-color: #db0f6f;
 $background-color: #f4f4f4;
 $font-color: #0D313C;
 #container{
@@ -8,6 +9,13 @@ $font-color: #0D313C;
 body{
   background: $background-color;
   color: $font-color;
+}
+textarea::placeholder {
+  color: #cccccc;
+}
+input.form_alert{
+  color:#f00;
+  background: #ffc2d1;
 }
 /* 見出し */
 h1 {
@@ -20,6 +28,15 @@ h1 {
   font-weight: bold;
   // margin-left: 7px;
   // margin-top: 7px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  span:first-child{
+    margin-right: 1.2rem;
+  }
+  .subtitle{
+    font-size: 1.4rem;
+  }
 }
 
 h1:before {
@@ -113,4 +130,42 @@ a i{
   font-size: 1.6rem;
   font-weight: normal;
   top: 1.3rem;
+}
+.checkbox_on{
+  background: $tag-color!important;
+  color: #fff;
+}
+#hidden_spots,#hidden_routes{
+  display: none;
+}
+#route_form,#spot_form{
+  input[type="text"], textarea ,select{
+    width: 100%;
+  }
+}
+.button_box.btn3{
+  display: flex;
+  .button-primary{
+    width: calc(33.3% - 4px);
+    box-sizing: border-box;
+  }
+  .button-primary:first-child{
+    margin-right: 6px;
+  }
+  .button-primary:last-child{
+    margin-left: 6px;
+  }
+}
+.button_box.btn2{
+  display: flex;
+  .button-primary{
+    width: calc(50% - 3px);
+    box-sizing: border-box;
+  }
+  .button-primary:first-child{
+    margin-right: 3px;
+  }
+  .button-primary:last-child{
+    margin-left: 3px;
+  }
 }

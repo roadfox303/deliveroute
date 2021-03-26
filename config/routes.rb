@@ -7,10 +7,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-  resources :users, :only => [:show]
+  resources :users, only:[:show]
   resources :routes do
     collection do
       patch :update_order
+    end
+    resources :route_spots, only:[:index, :edit, :update, :show] do
+      collection do
+        patch :update_order
+      end
     end
   end
   resources :spots do

@@ -1,6 +1,7 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_id, only: %i[edit destroy update show]
+  before_action :set_routes, only: %i[new edit]
   def index
     @user = current_user
     @spots = current_user.spots.order(id: "DESC").page(params[:page]).per(4)
@@ -23,6 +24,7 @@ class SpotsController < ApplicationController
   end
 
   def edit
+    @have_routes = @spot.routes.ids
   end
 
   def update
@@ -48,9 +50,7 @@ class SpotsController < ApplicationController
 
   private
   def spot_params
-    params.require(:spot).permit(:id, :name, :address, :tel, :memo
-      # customer_ids:[]
-    )
+    params.require(:spot).permit(:id, :name, :address, :tel, :memo, route_ids:[])
   end
   # def spots_params
   #   params.permit(spots: :sequence)
@@ -58,6 +58,9 @@ class SpotsController < ApplicationController
 
   def set_id
     @spot = Spot.find(params[:id])
+  end
+  def set_routes
+    @my_routes = current_user.routes.order(sequence: "ASC")
   end
 
 end

@@ -1,0 +1,36 @@
+h1
+  span 経路を編集
+  span.subtitle #{@route.name}
+div.route_spots_list
+  = link_to edit_route_path(@route.id), class:'button button-secondary w_full' do
+    i.fas.fa-pencil-alt
+    span 中継地点を追加
+  - if @route_spots.size >= 1
+    = form_with(url: update_order_route_route_spots_path, local: true, method: :patch, id:'sort_form') do
+      ul.sortableArea2
+        - @route_spots.each do |route_spot|
+          = fields_for "route_spots[]", route_spot do |f|
+            li id="id_#{route_spot.id}"
+              h2
+                span.sequence
+                  = route_spot.sequence.present? == true ? "#{route_spot.sequence}" : '--'
+                span #{route_spot.spot.name}
+                i.fas.fa-arrows-alt-v.move_icon
+              div.box_line
+                div
+                  = f.label :arrival
+                  / input type="text" name="route_spots[#{route_spot.id}][arrival]" class="timepicker" id="route_spots_#{route_spot.id}_arrival"
+
+                  = f.text_field :arrival, class: 'route_spot_arrival timepicker form_arrival'
+                div
+                  = f.label :volume
+                  = f.text_field :volume, class: 'route_spot_volume form_volume'
+              div.box_bottom
+                = f.label :memo, class:'tag_route_spot_memo'
+                = f.text_area :memo, placeholder:"#{@route.name}について", class: 'route_spot_memo'
+              = f.hidden_field :sequence, class:'form_sequence'
+      div.button_box.btn2
+        = link_to '戻る', routes_path, class:'button button-primary'
+        = submit_tag '登録する' , class:'button-primary'
+  - else
+    div.list_empty 登録された中継地点がありません。

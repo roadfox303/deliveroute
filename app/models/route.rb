@@ -16,7 +16,8 @@ class Route < ApplicationRecord
   #   end
   # end
   before_validation :set_sequence
-  after_destroy :align_sequence
+  after_destroy :align_route_sequence
+  after_update :align_route_spots_sequence
 
   private
     def set_sequence
@@ -24,10 +25,19 @@ class Route < ApplicationRecord
         self.sequence = (self.user.routes.size >= 1 ? self.user.routes.maximum("sequence") + 1 : 1)
       end
     end
-    def align_sequence
-      self.user.routes.order(sequence: "ASC", id:"DESC").map.with_index{ |route,index|
-        route.sequence = index + 1
-        route.save
+    def align_route_sequence
+      items = self.user.routes.order(sequence: "ASC", id:"DESC")
+      align_object(items)
+    end
+    def align_route_spots_sequence
+      items = self.route_spots.order(sequence: "ASC", id:"DESC")
+      align_object(items)
+    end
+
+    def align_object(items)
+      items.each_with_index{ |item,index|
+        item.sequence = index + 1
+        item.save
       }
     end
 end

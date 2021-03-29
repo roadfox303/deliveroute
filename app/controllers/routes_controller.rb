@@ -33,7 +33,7 @@ class RoutesController < ApplicationController
     if @route.update(route_params)
       redirect_to routes_path(anchor: "id_#{@route.id}"), notice: "「#{@route.name}」を編集しました"
     else
-      render :new
+      render :edit
     end
   end
 

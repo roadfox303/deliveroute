@@ -175,6 +175,13 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+  views:
+    pagination:
+      first: ""
+      last: ""
+      next: ""
+      previous: ""
+      truncate: "&hellip;"
   number:
     currency:
       format:

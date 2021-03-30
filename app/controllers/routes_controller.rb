@@ -9,6 +9,7 @@ class RoutesController < ApplicationController
   end
 
   def show
+    @spots = @route.route_spots.eager_load(:spot).order(:sequence).page(params[:page]).per(20)
   end
 
   def new
@@ -33,7 +34,7 @@ class RoutesController < ApplicationController
     if @route.update(route_params)
       redirect_to routes_path(anchor: "id_#{@route.id}"), notice: "「#{@route.name}」を編集しました"
     else
-      render :new
+      render :edit
     end
   end
 

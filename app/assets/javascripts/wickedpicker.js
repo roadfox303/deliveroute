@@ -43,7 +43,7 @@
             hoverState: 'hover-state',
             title: 'Timepicker',
             showSeconds: false,
-            timeSeparator: ' : ',
+            timeSeparator: ':',
             secondsInterval: 1,
             minutesInterval: 1,
             beforeShow: null,

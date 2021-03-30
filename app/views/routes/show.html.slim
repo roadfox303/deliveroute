@@ -1,2 +1,45 @@
-= @route.name
 = render partial: 'shared/notice'
+
+div#route_profile
+  h1
+    = @route.name
+  div#route_memo
+    = simple_format(@route.memo)
+  div#spot_list
+    = paginate @spots
+    ul
+      - @spots.each do |item|
+        li id="spot_#{item.id}"
+          header
+            span.sequence #{item.sequence}
+            span.arrival #{item.arrival}
+            span.name #{item.spot.name}
+            - if item.spot.memo.present? || item.memo.present?
+              span.icon_button data-id="#{item.id}"
+                i.fas.fa-sticky-note
+          div.detail
+            div
+              = link_to "https://maps.google.co.jp/maps/search/#{item.spot.address}" do
+                i.fas.fa-map-marker-alt
+                = item.spot.address
+            div
+              = link_to "tel:#{item.spot.tel}" do
+                i.fas.fa-phone-volume
+                = item.spot.tel
+          - if item.spot.memo.present? || item.memo.present?
+            div.memo
+              - if item.spot.memo.present?
+                div.common_memo
+                  = simple_format(item.spot.memo)
+              - if item.memo.present?
+                div.route_memo
+                  = simple_format(item.memo)
+    = paginate @spots
+div#bottom_nav
+  ul
+    li#btn_goto_top
+      i.fas.fa-arrow-up
+    li#btn_goto_bottom
+      i.fas.fa-arrow-down
+    li#btn_toggle_tags
+      i.fas.fa-sticky-note

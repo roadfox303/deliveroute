@@ -9,6 +9,7 @@ class RoutesController < ApplicationController
   end
 
   def show
+    @spots = @route.route_spots.eager_load(:spot).order(:sequence).page(params[:page]).per(20)
   end
 
   def new

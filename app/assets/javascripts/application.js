@@ -104,4 +104,28 @@ document.addEventListener('turbolinks:load', function() {
     $('#route_count').text(` (${count + 1})`);
     }
   });
+
+  $('.icon_button').on('click',function(){
+    $(`#spot_${$(this).attr("data-id")} .memo`).toggleClass('open');
+  });
+  $("#btn_toggle_tags").click(function () {
+    if ($(".memo").last().hasClass("open")){
+      $(".memo").removeClass("open");
+    }else{
+      $(".memo").addClass("open");
+    }
+  });
+
+  $("#btn_goto_top").click(function () {
+    $('body,html').animate({
+        scrollTop: 0
+    }, 500);
+    return false;
+  });
+  $("#btn_goto_bottom").click(function () {
+    $('body,html').animate({
+        scrollTop: $(document).height()
+    }, 500);
+    return false;
+  });
 });
